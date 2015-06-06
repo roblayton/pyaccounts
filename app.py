@@ -16,16 +16,16 @@ app.config['MONGO_DBNAME'] = 'main'
 # connect to the mongo db
 mongo = PyMongo(app)
 
-@app.route('/products', methods=['GET'])
-def products():
-  result = mongo.db.products.find()
+@app.route('/accounts', methods=['GET'])
+def accounts():
+  result = mongo.db.accounts.find()
   data = dumps(result)
   response = Response(data, status=200, mimetype='application/json')
   return response
 
-@app.route('/product', methods=['GET'])
-def product():
-  result = mongo.db.products.find({"productId": request.args.get('id')})
+@app.route('/account', methods=['GET'])
+def account():
+  result = mongo.db.accounts.find({"accountId": request.args.get('id')})
   data = dumps(result)
   response = Response(data, status=200, mimetype='application/json')
   return response
